@@ -8,6 +8,21 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
-function reverseInt(n) {}
+function reverseInt(n) {
+    let sum =0;
+    if(n==0){
+        return 0;
+    }
+    const isNegative = n< 0 ? true : false;
+    if (isNegative){
+        n = n *-1;
+    }
+    while(n>0){
+        let temp = n%10;
+        sum = sum * 10 + temp;
+        n = parseInt(n / 10);
+    }
+    return isNegative? sum * -1 : sum;
+}
 
 module.exports = reverseInt;
