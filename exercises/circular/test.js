@@ -1,50 +1,48 @@
 const circular = require('./index');
-const L = require('./linkedlist');
-const List = L.LinkedList;
-const Node = L.Node;
+const { Node, LinkedList } = require('./linkedlist');
 
 test('circular', () => {
   expect(typeof circular).toEqual('function');
 });
 
 test('circular detects circular linked lists', () => {
-  const l = new List();
+  const list = new LinkedList();
   const a = new Node('a');
   const b = new Node('b');
   const c = new Node('c');
 
-  l.head = a;
+  list.head = a;
   a.next = b;
   b.next = c;
   c.next = b;
-  //console.log(circular(l.head));
-  expect(circular(l.head)).toEqual(true);
+
+  expect(circular(list)).toEqual(true);
 });
 
 test('circular detects circular linked lists linked at the head', () => {
-  const l = new List();
+  const list = new LinkedList();
   const a = new Node('a');
   const b = new Node('b');
   const c = new Node('c');
 
-  l.head = a;
+  list.head = a;
   a.next = b;
   b.next = c;
   c.next = a;
 
-  expect(circular(l.head)).toEqual(true);
+  expect(circular(list)).toEqual(true);
 });
 
 test('circular detects non-circular linked lists', () => {
-  const l = new List();
+  const list = new LinkedList();
   const a = new Node('a');
   const b = new Node('b');
   const c = new Node('c');
 
-  l.head = a;
+  list.head = a;
   a.next = b;
   b.next = c;
   c.next = null;
 
-  expect(circular(l.head)).toEqual(false);
+  expect(circular(list)).toEqual(false);
 });

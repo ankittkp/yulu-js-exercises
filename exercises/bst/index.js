@@ -14,62 +14,22 @@
 class Node {
     constructor(data) {
         this.data = data;
-        this.left = this.left; //this keyword refers to the object it belongs to.
-        this.right = this.right;
+        this.left = null;
+        this.right = null;
     }
-}
-class BST {
-    constructor() {
-        this.root = null;
+
+    insert(data) {
+        if (data < this.data && this.left) this.left.insert(data);
+        else if (data > this.data && this.right) this.right.insert(data);
+        else if (data < this.data) this.left = new Node(data);
+        else if (data > this.data) this.right = new Node(data);
     }
-    insert(data)
-    {
-        var newNode = new Node(data);
-        if(this.root == null) {
-            this.root = newNode;
-        }
-        else {
-            this.insertNode(this.root, newNode);
-        }
-    }
-    insertNode(node,newNode){
-        console.log(node.data);
-        console.log(newNode.data);
-        if(newNode.data < node.data)
-        {
-            if(!node.left) {
-                node.left = newNode;
-                console.log(node.left.data);
-            }
-            else {
-                this.insertNode(node.left, newNode);
-            }
-        }
-        else
-        {
-            if(!node.right)
-                node.right = newNode;
-            else {
-                this.insertNode(node.right, newNode);
-            }
-        }
-    }
+
     contains(data) {
-        if (!this.root) return;
-        let current = this.root,
-            found = false;
-
-        while (current && !found) {
-            if (data < current.data) current = current.left;
-            else if (data > current.data) current = current.right;
-            else found = true;
-        };
-
-        if (!found) return null;
-        return current;
-    };
-
+        if (this.data === data) return this;
+        if (this.data < data && this.right) return this.right.contains(data);
+        if (this.data > data && this.left) return this.left.contains(data);
+        return null;
+    }
 }
-
 module.exports = Node;
-module.exports = BST;

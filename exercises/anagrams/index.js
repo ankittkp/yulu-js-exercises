@@ -9,9 +9,9 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-	var str_a = stringA.split('').sort().join('').toLowerCase();
+	let str_a = stringA.split('').sort().join('').toLowerCase();
 	console.log(str_a);
-	var str_b = stringB.split('').sort().join('').toLowerCase();
+	let str_b = stringB.split('').sort().join('').toLowerCase();
 	console.log(str_b);
 	if(str_a == str_b){
 		return true;
