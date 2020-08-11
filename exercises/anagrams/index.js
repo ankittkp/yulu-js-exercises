@@ -9,9 +9,9 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-	let str_a = stringA.split('').sort().join('').toLowerCase();
+	var str_a = stringA.split('').sort().ca
 	console.log(str_a);
-	let str_b = stringB.split('').sort().join('').toLowerCase();
+	var str_b = stringB.split('').sort().join('');
 	console.log(str_b);
 	if(str_a == str_b){
 		return true;
@@ -23,4 +23,4 @@ function anagrams(stringA, stringB) {
 
 module.exports = anagrams;
 
-//console.log(anagrams('abcd','fairy tales'));
+console.log(anagrams('abcd','fairy tales'));
